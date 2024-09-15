@@ -4,6 +4,7 @@ resource "github_repository" "aws_github" {
   description                 = "github repo configurations with terraform"
   visibility                  = "public"
   license_template            = "mit"
+  allow_auto_merge            = false
   allow_squash_merge          = true
   squash_merge_commit_title   = "COMMIT_OR_PR_TITLE"
   squash_merge_commit_message = "COMMIT_MESSAGES"
