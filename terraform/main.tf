@@ -30,7 +30,9 @@ provider "aws" {
   }
 }
 
-provider "github" {}
+provider "github" {
+  owner = "ryanemcdaniel"
+}
 
 data "github_user" "ryanemcdaniel" {
   username = "ryanemcdaniel"

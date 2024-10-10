@@ -87,3 +87,9 @@ resource "github_branch_protection" "public_main" {
     strict = true
   }
 }
+
+resource "github_repository_dependabot_security_updates" "public_main" {
+  for_each                = element(github_repository.public[*], 0)
+  repository  = each.value.id
+  enabled     = true
+}
