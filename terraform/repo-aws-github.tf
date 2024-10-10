@@ -61,7 +61,7 @@ resource "github_branch_protection" "aws_github_main" {
   }
 }
 
-import {
-  id = "aws-github"
-  to = github_repository.aws_github
+resource "github_repository_dependabot_security_updates" "aws_github" {
+  repository = github_repository.aws_github.id
+  enabled     = true
 }

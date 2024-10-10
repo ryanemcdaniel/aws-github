@@ -60,3 +60,8 @@ resource "github_branch_protection" "adhd" {
     strict = true
   }
 }
+
+resource "github_repository_dependabot_security_updates" "adhd" {
+  repository = github_repository.adhd.id
+  enabled     = true
+}

@@ -61,7 +61,7 @@ resource "github_branch_protection" "aws_organization" {
   }
 }
 
-import {
-  id = "aws-organization"
-  to = github_repository.aws_organization
+resource "github_repository_dependabot_security_updates" "aws_organization" {
+  repository = github_repository.aws_organization.id
+  enabled     = true
 }
