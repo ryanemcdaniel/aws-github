@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+pnpx eslint . --fix --quiet --cache --stats || echo "eslint failed"
