@@ -1,17 +1,15 @@
 {
-  "name": "aws-github",
-  "packageManager": "pnpm@9.9.0",
-  "engines": {
-    "node": "20.12.2"
-  },
-  "type": "module",
-  "scripts": {
-    "aws": "awslogin && awsexport",
-    "tffmt": "terraform fmt -recursive .",
-    "tfinit": "terraform -chdir=terraform init",
-    "tfpick": "terraform -chdir=terraform workspace select",
-    "tfplan": "terraform -chdir=terraform plan -out=.plan.tfplan",
-    "tfapply": "terraform -chdir=terraform apply .plan.tfplan",
-    "prprep": "pnpm install --merge-git-branch-lockfiles"
-  }
+    "name":           "aws-github",
+    "packageManager": "pnpm@9.9.0",
+    "engines":        {"node": "20.12.2"},
+    "type":           "module",
+    "scripts":        {
+        "aws":     "awslogin && awsexport",
+        "tformat": "terraform fmt -recursive .",
+        "tinit":   "terraform -chdir=terraform init",
+        "tselect": "terraform -chdir=terraform workspace select",
+        "tplan":   "terraform -chdir=terraform plan -out=.plan.tfplan",
+        "tapply":  "terraform -chdir=terraform apply .plan.tfplan",
+        "merge":   "pnpm install --merge-git-branch-lockfiles"
+    }
 }
