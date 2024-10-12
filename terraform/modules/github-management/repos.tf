@@ -51,26 +51,26 @@ resource "github_branch_protection" "main" {
   allows_deletions        = false
   allows_force_pushes     = false
   force_push_bypassers    = [data.github_user.owner.node_id]
-#   enforce_admins          = true
-#   restrict_pushes {
-#     blocks_creations = true
-#     push_allowances  = []
-#   }
+  #   enforce_admins          = true
+  #   restrict_pushes {
+  #     blocks_creations = true
+  #     push_allowances  = []
+  #   }
   required_pull_request_reviews {
     require_code_owner_reviews      = true
     required_approving_review_count = 1
     require_last_push_approval      = true
     dismiss_stale_reviews           = true
-#     dismissal_restrictions          = [data.github_user.owner.node_id]
-#     pull_request_bypassers          = [data.github_user.owner.node_id]
+    #     dismissal_restrictions          = [data.github_user.owner.node_id]
+    #     pull_request_bypassers          = [data.github_user.owner.node_id]
   }
   required_status_checks {
     strict = true
-#     contexts = [
-#       "pr/verify",
-#       "pr/validate",
-#       "main/regression"
-#     ]
+    #     contexts = [
+    #       "pr/verify",
+    #       "pr/validate",
+    #       "main/regression"
+    #     ]
   }
 }
 
