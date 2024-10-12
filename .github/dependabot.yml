@@ -6,10 +6,18 @@ updates:
       - /
     schedule:
       interval: weekly
+      time: a
+
+  - package-ecosystem: docker
+    directories:
+    - /
+    schedule:
+      interval: weekly
 
   - package-ecosystem: npm
     directories:
       - /
+      - /packages/**/*
     schedule:
       interval: weekly
 
@@ -18,3 +26,35 @@ updates:
       - /terraform/**/*
     schedule:
       interval: weekly
+
+
+groups:
+  node-aws:
+    patterns:
+      - @aws-sdk/*
+      - @effect-aws/*
+      - @types/aws-lambda
+  node-hapi:
+    patterns:
+      - hapi
+      - @hapi/*
+      - joi
+  node-effect:
+    patterns:
+      - effect
+      - @effect/*
+  node-discord:
+    patterns:
+      - discord.js
+      - @discordjs/*
+      - discord-interactions
+      - discord-api-types
+  node-lint:
+    patterns:
+      - @commitlint/*
+      - husky
+      - typescript-eslint
+      - eslint
+      - @eslint/*
+      - @stylistic/*
+      - @types/eslint__js
