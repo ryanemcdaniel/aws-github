@@ -47,7 +47,7 @@ module "github_management" {
     }
     aws-github = {
       visibility     = "public"
-      standard_files = [""]
+      standard_files = ["base"]
       description    = "github repo configurations with terraform"
       has_wiki       = false
     }
@@ -71,31 +71,8 @@ module "github_management" {
     }
   }
   standard_files = {
-    base = merge(
-      {for f in fileset("${path.cwd}/standards/base", "**/*") : f => true},
-      {
-        "package.json" = false
-      }
-    )
-    terraform = {
-        ".github/workflows/main.yml" = false
-        ".github/workflows/pr.yml"   = false
-        ".github/dependabot.yml"     = true
-        ".husky/commit-msg"          = true
-        ".husky/pre-commit"          = true
-        "test/unit/tsconfig.json"    = true
-        ".commitlint.config.ts"      = true
-        ".editorconfig"              = true
-        ".gitignore"                 = true
-        ".npmrc"                     = true
-        "package.json"               = false
-        "LICENSE"                    = false
-        "tsconfig.check.json"        = true
-        "tsconfig.eslint.json"       = true
-        "tsconfig.json"              = true
-    }
-    pnpm = {
-        "test.ts" = false
-    }
+    base = merge({ for f in fileset("${path.cwd}/standards/base", "**/*") : f => true }, {
+      "package.json" = false
+    })
   }
 }
