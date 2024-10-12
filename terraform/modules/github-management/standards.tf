@@ -4,21 +4,21 @@ locals {
 }
 
 resource "github_branch" "initial_standards" {
-  for_each        = local.repo_initial_pr
+  for_each   = local.repo_initial_pr
   repository = each.value[0][0]
   branch     = "standards/initial/${each.value[0][2]}"
 }
 
 resource "github_repository_file" "initial_standards" {
-  for_each            = local.initial_standards
-  repository          = each.value[0]
-  branch              = "standards/initial/${each.value[2]}"
-  commit_message      = "chore(standards/${each.value[2]}): init ${each.value[3]}"
-  autocreate_branch   = true
+  for_each                        = local.initial_standards
+  repository                      = each.value[0]
+  branch                          = "standards/initial/${each.value[2]}"
+  commit_message                  = "chore(standards/${each.value[2]}): init ${each.value[3]}"
+  autocreate_branch               = true
   autocreate_branch_source_branch = "main"
-  overwrite_on_create = false
-  file                = each.value[3]
-  content             = file("${path.cwd}/standards/${each.value[2]}/${each.value[3]}")
+  overwrite_on_create             = false
+  file                            = each.value[3]
+  content                         = file("${path.cwd}/standards/${each.value[2]}/${each.value[3]}")
 }
 
 resource "github_repository_pull_request" "initial_standards" {
@@ -37,21 +37,21 @@ locals {
 }
 
 resource "github_branch" "restore_standards" {
-  for_each        = local.repo_ongoing_pr
+  for_each   = local.repo_ongoing_pr
   repository = each.value[0][0]
-  branch     =  "standards/restore/${each.value[0][2]}"
+  branch     = "standards/restore/${each.value[0][2]}"
 }
 
 resource "github_repository_file" "restore_standards" {
-  for_each            = local.ongoing_standards
-  repository          = each.value[0]
-  branch              = "standards/restore/${each.value[2]}"
-  autocreate_branch   = true
+  for_each                        = local.ongoing_standards
+  repository                      = each.value[0]
+  branch                          = "standards/restore/${each.value[2]}"
+  autocreate_branch               = true
   autocreate_branch_source_branch = "main"
-  commit_message      = "chore(standards/${each.value[2]}): restore ${each.value[3]}"
-  overwrite_on_create = true
-  file                = each.value[3]
-  content             = file("${path.cwd}/standards/${each.value[2]}/${each.value[3]}")
+  commit_message                  = "chore(standards/${each.value[2]}): restore ${each.value[3]}"
+  overwrite_on_create             = true
+  file                            = each.value[3]
+  content                         = file("${path.cwd}/standards/${each.value[2]}/${each.value[3]}")
 }
 
 resource "github_repository_pull_request" "restore_standards" {
